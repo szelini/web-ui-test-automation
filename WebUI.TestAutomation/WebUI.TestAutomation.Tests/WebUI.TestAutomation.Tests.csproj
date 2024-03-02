@@ -9,10 +9,7 @@
     <IsTestProject>true</IsTestProject>
   </PropertyGroup>
 
-	<PropertyGroup>
-		<RunSettingsFilePath>$(MSBuildProjectDirectory)\test.runsettings</RunSettingsFilePath>
-	</PropertyGroup>
-
+	
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.5.0" />
     <PackageReference Include="NUnit" Version="3.13.3" />
@@ -22,6 +19,11 @@
     <PackageReference Include="Selenium.Support" Version="4.17.0" />
     <PackageReference Include="Selenium.WebDriver" Version="4.17.0" />
     <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="121.0.6167.8500" />
+  </ItemGroup>
+
+	
+  <ItemGroup>
+    <ProjectReference Include="..\WebUI.TestAutomation.Pages\WebUI.TestAutomation.Pages.csproj" />
   </ItemGroup>
 
 </Project>
