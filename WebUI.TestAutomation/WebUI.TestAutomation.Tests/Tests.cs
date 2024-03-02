@@ -22,7 +22,7 @@ namespace WebUI.TestAutomation.Tests
         {
             var mainPage = new MainPage(driver);
 
-            var careersPage = mainPage.Open().Careers();
+            var careersPage = mainPage.Open().ClickCareers();
 
             var jobListingsPage = careersPage
                 .SetProgrammingLanguage(programmingLanguage)
@@ -47,11 +47,22 @@ namespace WebUI.TestAutomation.Tests
 
             var mainPage = new MainPage(driver);
 
-            var searchPage = mainPage.Open().Search(phrase);
+            var searchPage = mainPage.Open().PerformSearch(phrase);
 
             var linkTexts = searchPage.GetLinkTextsFromResults();
 
             Assert.IsTrue(linkTexts.TrueForAll(x => x.Contains(phrase)));
+        }
+
+        [TestCase("D:\\Users\\Bagyánszki Szandra\\Downloads\\EPAM_Corporate_Overview_Q4_EOY.pdf")]
+        public void FileDownloadWorks(string filepath)
+        {
+            var mainPage = new MainPage(driver);
+            var aboutPage = mainPage.Open().ClickAbout();
+            
+            aboutPage.Download(filepath);
+
+            Assert.IsTrue(File.Exists(filepath));
         }
 
         [TearDown]
