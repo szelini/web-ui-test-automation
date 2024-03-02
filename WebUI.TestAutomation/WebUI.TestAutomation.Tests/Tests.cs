@@ -2,7 +2,7 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
-namespace Tests
+namespace WebUI.TestAutomation.Tests
 {
     [TestFixture]
     public class Tests
