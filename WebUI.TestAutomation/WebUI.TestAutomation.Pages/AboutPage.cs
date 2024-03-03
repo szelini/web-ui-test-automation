@@ -29,13 +29,9 @@ namespace WebUI.TestAutomation.Pages
 
             downloadActions
                .ScrollToElement(thirdSectionDiv)
+               .Click(downloadButton)
+               .Pause(TimeSpan.FromSeconds(3))
                .Perform();
-
-            downloadButton.Click();
-
-            
         }
-
-
     }
 }

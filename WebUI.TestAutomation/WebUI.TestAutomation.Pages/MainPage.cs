@@ -63,7 +63,5 @@ namespace WebUI.TestAutomation.Pages
             insightsLink.Click();
             return new InsightsPage(driver);
         }
-
-
     }
 }

@@ -39,8 +39,5 @@ namespace WebUI.TestAutomation.Pages
             return new ArticlePage(driver);
         }
 
-
-
-
     }
 }

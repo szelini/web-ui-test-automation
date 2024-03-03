@@ -13,7 +13,14 @@ namespace WebUI.TestAutomation.Tests
         [SetUp]
         public void Setup()
         {
-            driver = new ChromeDriver();
+            var chromeOptions = new ChromeOptions();
+
+            if (TestContext.Parameters["runHeadlessMode"] == "true")
+            {
+                chromeOptions.AddArgument("--headless=new");
+            }
+
+            driver = new ChromeDriver(chromeOptions);
             driver.Manage().Window.Maximize();
         }
 
