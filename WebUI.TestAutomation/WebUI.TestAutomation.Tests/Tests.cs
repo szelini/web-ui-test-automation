@@ -22,7 +22,7 @@ namespace WebUI.TestAutomation.Tests
         {
             var mainPage = new MainPage(driver);
 
-            var careersPage = mainPage.Open().ClickCareers();
+            var careersPage = mainPage.Open().NavigateToCareersPage();
 
             var jobListingsPage = careersPage
                 .SetProgrammingLanguage(programmingLanguage)
@@ -58,11 +58,26 @@ namespace WebUI.TestAutomation.Tests
         public void FileDownloadWorks(string filepath)
         {
             var mainPage = new MainPage(driver);
-            var aboutPage = mainPage.Open().ClickAbout();
+            var aboutPage = mainPage.Open().NavigateToAboutPage();
             
             aboutPage.Download(filepath);
 
             Assert.IsTrue(File.Exists(filepath));
+        }
+
+        [Test]
+        public void TitleOfArticleMatchesTitleInCarousel()
+        {
+            var mainPage = new MainPage(driver);
+            var insightsPage = mainPage.Open().NavigateToInsightsPage();
+
+            var articleNameFromCarousel = insightsPage.GetArticleNameFromCarousel();
+
+            var articlePage = insightsPage.NavigateToArticlePage();
+
+            var articleNameFromHeader = articlePage.GetArticleNameFromHeader();
+
+            StringAssert.AreEqualIgnoringCase(articleNameFromCarousel, articleNameFromHeader);
         }
 
         [TearDown]

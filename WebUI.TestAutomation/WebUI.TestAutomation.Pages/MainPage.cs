@@ -13,8 +13,10 @@ namespace WebUI.TestAutomation.Pages
         private IWebElement searchIcon => driver.FindElement(By.ClassName("search-icon"));
         private IWebElement searchInput => wait.Until(driver => driver.FindElement(By.Name("q")));
         private IWebElement findButton => driver.FindElement(By.ClassName("custom-search-button"));
-
         private IWebElement aboutLink => driver.FindElement(By.LinkText("About"));
+        private IWebElement insightsLink => driver.FindElement(By.LinkText("Insights"));
+
+
 
         public MainPage(IWebDriver driver) : base(driver)
         {
@@ -28,7 +30,7 @@ namespace WebUI.TestAutomation.Pages
             return this;
         }
 
-        public CareersPage ClickCareers()
+        public CareersPage NavigateToCareersPage()
         {
             careersLink.Click();
             return new CareersPage(driver);
@@ -50,10 +52,16 @@ namespace WebUI.TestAutomation.Pages
             return new SearchResultsPage(driver);
         }
 
-        public AboutPage ClickAbout()
+        public AboutPage NavigateToAboutPage()
         {
             aboutLink.Click();
             return new AboutPage(driver);
+        }
+
+        public InsightsPage NavigateToInsightsPage()
+        {
+            insightsLink.Click();
+            return new InsightsPage(driver);
         }
 
 
