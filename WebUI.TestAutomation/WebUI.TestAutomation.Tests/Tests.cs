@@ -20,6 +20,8 @@ namespace WebUI.TestAutomation.Tests
                 chromeOptions.AddArgument("--headless=new");
             }
 
+            chromeOptions.AddUserProfilePreference("download.default_directory", @"C:\SeleniumDownloads");
+
             driver = new ChromeDriver(chromeOptions);
             driver.Manage().Window.Maximize();
         }
@@ -61,15 +63,17 @@ namespace WebUI.TestAutomation.Tests
             Assert.IsTrue(linkTexts.TrueForAll(x => x.Contains(phrase)));
         }
 
-        [TestCase("D:\\Users\\Bagyánszki Szandra\\Downloads\\EPAM_Corporate_Overview_Q4_EOY.pdf")]
-        public void FileDownloadWorks(string filepath)
+        [TestCase("C:\\SeleniumDownloads", "EPAM_Corporate_Overview_Q4_EOY.pdf")]
+        public void FileDownloadWorks(string filepath, string filename)
         {
             var mainPage = new MainPage(driver);
             var aboutPage = mainPage.Open().NavigateToAboutPage();
-            
-            aboutPage.Download(filepath);
 
-            Assert.IsTrue(File.Exists(filepath));
+            var fullDownloadPath = Path.Combine(filepath, filename);
+
+            aboutPage.Download(Path.Combine(fullDownloadPath));
+
+            Assert.IsTrue(File.Exists(fullDownloadPath));
         }
 
         [Test]
