@@ -3,7 +3,8 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 
-namespace WebUI.TestAutomation.Pages
+
+namespace WebUI.TestAutomation.Business.PageObjects
 {
     public class MainPage : BasePage
     {
@@ -22,7 +23,7 @@ namespace WebUI.TestAutomation.Pages
         {
             PageUrl = TestContext.Parameters["appUrl"];
         }
-        
+
 
         public MainPage Open()
         {

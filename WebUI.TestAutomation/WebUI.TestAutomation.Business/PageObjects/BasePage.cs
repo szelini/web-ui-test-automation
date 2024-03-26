@@ -6,11 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WebUI.TestAutomation.Pages
+namespace WebUI.TestAutomation.Business.PageObjects
 {
     public abstract class BasePage
     {
-        public string PageUrl { get; protected set;  }
+        public string PageUrl { get; protected set; }
 
         protected IWebDriver driver;
         protected WebDriverWait wait;
@@ -18,7 +18,7 @@ namespace WebUI.TestAutomation.Pages
         public BasePage(IWebDriver driver)
         {
             this.driver = driver;
-            this.wait = new WebDriverWait(driver, TimeSpan.FromSeconds(2))
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(2))
             {
                 PollingInterval = TimeSpan.FromSeconds(0.25),
                 Message = "Element has not been found"

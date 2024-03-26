@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WebUI.TestAutomation.Pages
+namespace WebUI.TestAutomation.Business.PageObjects
 {
-    public class CareersPage: BasePage
+    public class CareersPage : BasePage
     {
         private IWebElement jobSearchForm => wait.Until(driver => driver.FindElement(By.Id("jobSearchFilterForm")));
         private IWebElement inputKeywords => jobSearchForm.FindElement(By.Id("new_form_job_search-keyword"));

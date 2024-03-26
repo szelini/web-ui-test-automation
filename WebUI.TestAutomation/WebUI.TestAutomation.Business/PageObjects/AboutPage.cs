@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WebUI.TestAutomation.Pages
+namespace WebUI.TestAutomation.Business.PageObjects
 {
     public class AboutPage : BasePage
     {

@@ -1,30 +1,30 @@
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-using WebUI.TestAutomation.Pages;
+using WebUI.TestAutomation.Business.PageObjects;
+
 
 namespace WebUI.TestAutomation.Tests
 {
     [TestFixture]
-    public class Tests
+    public class Tests : BaseTest
     {
-        IWebDriver driver;
+    ////#TODo ezeket az optionokat belerakni
+    //    [SetUp]
+    //    public void Setup()
+    //    {
+    //        var chromeOptions = new ChromeOptions();
 
-        [SetUp]
-        public void Setup()
-        {
-            var chromeOptions = new ChromeOptions();
+    //        if (TestContext.Parameters["runHeadlessMode"] == "true")
+    //        {
+    //            chromeOptions.AddArgument("--headless=new");
+    //        }
 
-            if (TestContext.Parameters["runHeadlessMode"] == "true")
-            {
-                chromeOptions.AddArgument("--headless=new");
-            }
+    //        chromeOptions.AddUserProfilePreference("download.default_directory", @"C:\SeleniumDownloads");
 
-            chromeOptions.AddUserProfilePreference("download.default_directory", @"C:\SeleniumDownloads");
-
-            driver = new ChromeDriver(chromeOptions);
-            driver.Manage().Window.Maximize();
-        }
+    //        driver = new ChromeDriver(chromeOptions);
+    //        driver.Manage().Window.Maximize();
+    //    }
 
         [TestCase("C#", "All Locations")]
         public void SearchForPosition_ProgrammingLanguageLocationRemote(string programmingLanguage, string location) 
@@ -91,10 +91,6 @@ namespace WebUI.TestAutomation.Tests
             StringAssert.AreEqualIgnoringCase(articleNameFromCarousel, articleNameFromHeader);
         }
 
-        [TearDown]
-        protected void Teardown()
-        {
-            driver.Quit();
-        }
+        
     }
 }

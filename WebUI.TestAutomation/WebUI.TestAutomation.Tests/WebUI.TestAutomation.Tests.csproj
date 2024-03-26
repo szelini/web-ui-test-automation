@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -11,6 +11,8 @@
 
 	
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.5.0" />
     <PackageReference Include="NUnit" Version="3.13.3" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.4.2" />
@@ -18,12 +20,14 @@
     <PackageReference Include="coverlet.collector" Version="3.2.0" />
     <PackageReference Include="Selenium.Support" Version="4.17.0" />
     <PackageReference Include="Selenium.WebDriver" Version="4.17.0" />
-    <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="121.0.6167.8500" />
+    <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="123.0.6312.5800" />
+    <PackageReference Include="Selenium.WebDriver.MSEdgeDriver" Version="122.0.2365.63" />
   </ItemGroup>
 
 	
   <ItemGroup>
-    <ProjectReference Include="..\WebUI.TestAutomation.Pages\WebUI.TestAutomation.Pages.csproj" />
+    <ProjectReference Include="..\WebUI.TestAutomation.Business\WebUI.TestAutomation.Business.csproj" />
+    <ProjectReference Include="..\WebUI.TestAutomation.Core\WebUI.TestAutomation.Core.csproj" />
   </ItemGroup>
 
 </Project>

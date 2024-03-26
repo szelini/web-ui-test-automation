@@ -1,9 +1,9 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 
-namespace WebUI.TestAutomation.Pages
+namespace WebUI.TestAutomation.Business.PageObjects
 {
-    public  class ArticlePage : BasePage
+    public class ArticlePage : BasePage
     {
         private IWebElement articleName => wait.Until(driver => driver.FindElement(By.XPath("//div[@class=\"header_and_download\"]//span")));
 

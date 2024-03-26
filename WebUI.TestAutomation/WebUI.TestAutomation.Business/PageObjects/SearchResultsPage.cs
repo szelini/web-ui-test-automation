@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WebUI.TestAutomation.Pages
+namespace WebUI.TestAutomation.Business.PageObjects
 {
     public class SearchResultsPage : BasePage
     {
@@ -20,6 +20,6 @@ namespace WebUI.TestAutomation.Pages
         {
             return resultListDiv.FindElements(By.TagName("a")).Select(t => t.Text).ToList();
         }
-       
+
     }
 }
