@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace WebUI.TestAutomation.Core.Configuration
 {
-    public static class Configuration
+    public class Configuration
     {
-        public static ConfigModel Model { get; }
+        public  ConfigModel Model { get; }
 
-        static Configuration()
+        public Configuration(string configfile)
         {
             Model = new ConfigModel();
             new ConfigurationBuilder()
-                .AddJsonFile("./Configuration/config.json")
+                .AddJsonFile(configfile)
                 .Build()
                 .Bind(Model);
         }

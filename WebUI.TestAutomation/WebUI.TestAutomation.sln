@@ -7,12 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebUI.TestAutomation.Tests"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebUI.TestAutomation.Business", "WebUI.TestAutomation.Business\WebUI.TestAutomation.Business.csproj", "{534B3F65-8C89-4138-A219-25EB839CB589}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A8E7E33F-451A-4E7F-B696-EF7604A1CA42}"
-	ProjectSection(SolutionItems) = preProject
-		test.runsettings = test.runsettings
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebUI.TestAutomation.Core", "WebUI.TestAutomation.Core\WebUI.TestAutomation.Core.csproj", "{A293CE94-A686-4C26-9E86-869E0E5D1690}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebUI.TestAutomation.Core", "WebUI.TestAutomation.Core\WebUI.TestAutomation.Core.csproj", "{A293CE94-A686-4C26-9E86-869E0E5D1690}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

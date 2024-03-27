@@ -30,7 +30,7 @@ namespace WebUI.TestAutomation.Business.PageObjects
             downloadActions
                .ScrollToElement(thirdSectionDiv)
                .Click(downloadButton)
-               .Pause(TimeSpan.FromSeconds(3))
+               .Pause(TimeSpan.FromSeconds(5))
                .Perform();
         }
     }

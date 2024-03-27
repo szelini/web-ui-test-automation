@@ -9,26 +9,10 @@ namespace WebUI.TestAutomation.Tests
     [TestFixture]
     public class Tests : BaseTest
     {
-    ////#TODo ezeket az optionokat belerakni
-    //    [SetUp]
-    //    public void Setup()
-    //    {
-    //        var chromeOptions = new ChromeOptions();
-
-    //        if (TestContext.Parameters["runHeadlessMode"] == "true")
-    //        {
-    //            chromeOptions.AddArgument("--headless=new");
-    //        }
-
-    //        chromeOptions.AddUserProfilePreference("download.default_directory", @"C:\SeleniumDownloads");
-
-    //        driver = new ChromeDriver(chromeOptions);
-    //        driver.Manage().Window.Maximize();
-    //    }
-
         [TestCase("C#", "All Locations")]
         public void SearchForPosition_ProgrammingLanguageLocationRemote(string programmingLanguage, string location) 
         {
+
             var mainPage = new MainPage(driver);
 
             var careersPage = mainPage.Open().NavigateToCareersPage();
@@ -53,7 +37,7 @@ namespace WebUI.TestAutomation.Tests
         [TestCase("Automation")]
         public void GlobalSearch_ReturnsRelevantLinks(string phrase)
         {
-
+          
             var mainPage = new MainPage(driver);
 
             var searchPage = mainPage.Open().PerformSearch(phrase);
@@ -66,12 +50,19 @@ namespace WebUI.TestAutomation.Tests
         [TestCase("C:\\SeleniumDownloads", "EPAM_Corporate_Overview_Q4_EOY.pdf")]
         public void FileDownloadWorks(string filepath, string filename)
         {
+            
+
             var mainPage = new MainPage(driver);
+
+           
             var aboutPage = mainPage.Open().NavigateToAboutPage();
 
             var fullDownloadPath = Path.Combine(filepath, filename);
+            
 
-            aboutPage.Download(Path.Combine(fullDownloadPath));
+            aboutPage.Download(fullDownloadPath);
+
+           
 
             Assert.IsTrue(File.Exists(fullDownloadPath));
         }

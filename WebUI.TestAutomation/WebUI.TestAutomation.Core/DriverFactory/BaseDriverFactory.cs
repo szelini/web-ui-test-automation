@@ -10,6 +10,6 @@ namespace WebUI.TestAutomation.Core.DriverFactory
 {
     public abstract class BaseDriverFactory
     {
-        public abstract IWebDriver CreateDriver(Options options);
+        public abstract IWebDriver CreateDriver(ConfigModel model);
     }
 }

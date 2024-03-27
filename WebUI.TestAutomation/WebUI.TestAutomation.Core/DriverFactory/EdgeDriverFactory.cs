@@ -12,18 +12,20 @@ namespace WebUI.TestAutomation.Core.DriverFactory
 {
     public class EdgeDriverFactory : BaseDriverFactory
     {
-        public override IWebDriver CreateDriver(Options options)
+        public override IWebDriver CreateDriver(ConfigModel model)
         {
             var edgeOptions = new EdgeOptions();
-            
-            if (options.RunHeadlessMode)
+
+
+            if (model.RunHeadlessMode)
             {
                 edgeOptions.AddArgument("--headless");
             }
 
-            if (!string.IsNullOrEmpty(options.DownloadDirectory))
+            if (!string.IsNullOrEmpty(model.DownloadDirectory))
             {
-                edgeOptions.AddUserProfilePreference("download.default_directory", options.DownloadDirectory);
+                edgeOptions.AddUserProfilePreference("download.default_directory", model.DownloadDirectory);
+                edgeOptions.AddUserProfilePreference("download.prompt_for_download", model.DownloadDirectory);
 
             }
             return new EdgeDriver(edgeOptions);

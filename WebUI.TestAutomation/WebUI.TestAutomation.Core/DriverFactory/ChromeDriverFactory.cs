@@ -6,24 +6,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WebUI.TestAutomation.Core.Configuration;
+using OpenQA.Selenium.Interactions;
 
 namespace WebUI.TestAutomation.Core.DriverFactory
 {    
     public class ChromeDriverFactory : BaseDriverFactory
     {
-        public override IWebDriver CreateDriver(Options options)
+        public override IWebDriver CreateDriver(ConfigModel model)
         {
             var chromeOptions = new ChromeOptions();
 
-            if (options.RunHeadlessMode)
+            if (model.RunHeadlessMode)
             {
                 chromeOptions.AddArgument("--headless=new");
             }
 
-            if (!string.IsNullOrEmpty(options.DownloadDirectory))
+            if (!string.IsNullOrEmpty(model.DownloadDirectory))
             {
-                chromeOptions.AddUserProfilePreference("download.default_directory", options.DownloadDirectory);
-
+                chromeOptions.AddUserProfilePreference("download.default_directory", model.DownloadDirectory);
+                chromeOptions.AddUserProfilePreference("download.prompt_for_download", false);
             }
 
             return new ChromeDriver(chromeOptions);
