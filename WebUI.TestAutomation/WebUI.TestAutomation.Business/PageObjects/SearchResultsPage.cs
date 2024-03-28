@@ -16,9 +16,9 @@ namespace WebUI.TestAutomation.Business.PageObjects
         {
         }
 
-        public List<string> GetLinkTextsFromResults()
+        public List<string> GetTextFromResults()
         {
-            return resultListDiv.FindElements(By.TagName("a")).Select(t => t.Text).ToList();
+            return resultListDiv.FindElements(By.XPath("//*[@class='search-results__title-link' or @class='search-results__description']")).Select(t => t.Text).ToList();
         }
 
     }

@@ -42,9 +42,9 @@ namespace WebUI.TestAutomation.Tests
 
             var searchPage = mainPage.Open().PerformSearch(phrase);
 
-            var linkTexts = searchPage.GetLinkTextsFromResults();
+            var resultTextss = searchPage.GetTextFromResults();
 
-            Assert.IsTrue(linkTexts.TrueForAll(x => x.Contains(phrase)));
+            Assert.IsTrue(resultTextss.TrueForAll(x => x.Contains(phrase)));
         }
 
         [TestCase("C:\\SeleniumDownloads", "EPAM_Corporate_Overview_Q4_EOY.pdf")]
