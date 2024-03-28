@@ -1,7 +1,6 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <RunSettings>
   <TestRunParameters>
 	<Parameter name="appUrl" value="https://www.epam.com/" />
-	<Parameter name ="runHeadlessMode" value="false" />
   </TestRunParameters>
 </RunSettings> 

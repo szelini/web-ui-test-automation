@@ -16,7 +16,6 @@ namespace WebUI.TestAutomation.Core.DriverFactory
         {
             var edgeOptions = new EdgeOptions();
 
-
             if (model.RunHeadlessMode)
             {
                 edgeOptions.AddArgument("--headless");
@@ -28,6 +27,7 @@ namespace WebUI.TestAutomation.Core.DriverFactory
                 edgeOptions.AddUserProfilePreference("download.prompt_for_download", model.DownloadDirectory);
 
             }
+
             return new EdgeDriver(edgeOptions);
         }
     }

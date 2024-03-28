@@ -9,12 +9,20 @@
     <IsTestProject>true</IsTestProject>
   </PropertyGroup>
 
+	<PropertyGroup>
+		<RunSettingsFilePath>$(MSBuildProjectDirectory)\test.runsettings</RunSettingsFilePath>
+	</PropertyGroup>
+
   <ItemGroup>
     <None Remove="config.json" />
+    <None Remove="test.runsettings" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="config.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="test.runsettings">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

@@ -82,6 +82,5 @@ namespace WebUI.TestAutomation.Tests
             StringAssert.AreEqualIgnoringCase(articleNameFromCarousel, articleNameFromHeader);
         }
 
-        
     }
 }
