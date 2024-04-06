@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WDSE;
+using WDSE.Decorators;
+using WDSE.ScreenshotMaker;
 
 namespace WebUI.TestAutomation.Core.Utilities
 {
@@ -11,13 +14,14 @@ namespace WebUI.TestAutomation.Core.Utilities
     {
         public static void TakeScreenShot(IWebDriver driver, string testName, string screenshotDirectoryPath)
         {
-            var screenshot = ((ITakesScreenshot)driver).GetScreenshot();
-
             if (!Directory.Exists(screenshotDirectoryPath))
             {
                 Directory.CreateDirectory(screenshotDirectoryPath);
             }
-            screenshot.SaveAsFile(Path.Combine(Path.GetFullPath(screenshotDirectoryPath), $"{testName}_{DateTime.Now:yyyy-MM-dd_HH-mm-ss.fffff}.png"));
+
+            VerticalCombineDecorator vcd = new VerticalCombineDecorator(new ScreenshotMaker());
+
+            driver.TakeScreenshot(vcd).ToMagickImage().Write(new FileInfo(Path.Combine(Path.GetFullPath(screenshotDirectoryPath), $"{testName}_{DateTime.Now:yyyy-MM-dd_HH-mm-ss.fffff}.png")));
         }
     }
 }
