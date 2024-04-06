@@ -18,11 +18,16 @@ namespace WebUI.TestAutomation.Business.PageObjects
         {
         }
 
-        public void Download(string filepath)
+        public void Download(string filepath, string filename)
         {
-            if (File.Exists(filepath))
+            if (File.Exists(Path.Combine(filepath, filename)))
             {
-                File.Delete(filepath);
+                File.Delete(Path.Combine(filepath, filename));
+            }
+
+            if (!Directory.Exists(filepath))
+            {
+                Directory.CreateDirectory(filepath);
             }
 
             var downloadActions = new Actions(driver);

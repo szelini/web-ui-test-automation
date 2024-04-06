@@ -49,19 +49,14 @@ namespace WebUI.TestAutomation.Tests
         [TestCase("C:\\SeleniumDownloads", "EPAM_Corporate_Overview_Q4_EOY.pdf")]
         public void FileDownloadWorks(string filepath, string filename)
         {
-            
-
             var mainPage = new MainPage(driver);
-
            
             var aboutPage = mainPage.Open().NavigateToAboutPage();
-
-            var fullDownloadPath = Path.Combine(filepath, filename);
             
 
-            aboutPage.Download(fullDownloadPath);
+            aboutPage.Download(filepath, filename);
 
-           
+            var fullDownloadPath = Path.Combine(filepath, filename);
 
             Assert.IsTrue(File.Exists(fullDownloadPath));
         }
