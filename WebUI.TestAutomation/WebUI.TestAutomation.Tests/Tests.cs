@@ -22,7 +22,6 @@ namespace WebUI.TestAutomation.Tests
                 .SelectLocationFromDropDown(location)
                 .SetRemote()
                 .ClickFindButton();
-            
 
             var jobDetailPage = jobListingsPage.ClickViewAndApplyButton();
 

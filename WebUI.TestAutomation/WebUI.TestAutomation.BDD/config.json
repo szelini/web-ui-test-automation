@@ -1,0 +1,8 @@
+{
+  "browser": "Chrome",
+  "runHeadlessMode": false,
+  "downloadDirectory": "C:\\SeleniumDownloads\\",
+  "screenshotDirectory": "C:\\SeleniumScreenshots\\",
+  "logDirectory": "C:\\SeleniumLogs\\",
+  "logLevel": "Information"
+}
