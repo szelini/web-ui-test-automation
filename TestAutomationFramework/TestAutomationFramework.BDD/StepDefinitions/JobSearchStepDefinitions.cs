@@ -1,10 +1,6 @@
 using NUnit.Framework;
 using OpenQA.Selenium;
-using System;
-using TechTalk.SpecFlow;
 using TestAutomationFramework.Business.PageObjects;
-using TestAutomationFramework.Core.Configuration;
-using TestAutomationFramework.Core.DriverFactory;
 
 namespace TestAutomationFramework.BDD.StepDefinitions
 {
@@ -18,7 +14,7 @@ namespace TestAutomationFramework.BDD.StepDefinitions
 
         public JobSearchStepDefinitions()
         {
-            mainPage = new MainPage(driver);
+            mainPage = new MainPage(driver, configuration.Model.AppUrl);
         }
 
 

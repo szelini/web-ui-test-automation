@@ -1,18 +1,12 @@
 ﻿using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TestAutomationFramework.Core.Configuration;
-using OpenQA.Selenium.Interactions;
 
 namespace TestAutomationFramework.Core.DriverFactory
 {    
     public class ChromeDriverFactory : BaseDriverFactory
     {
-        public override IWebDriver CreateDriver(ConfigModel model)
+        public override IWebDriver CreateDriver(BrowserConfigModel model)
         {
             var chromeOptions = new ChromeOptions();
 

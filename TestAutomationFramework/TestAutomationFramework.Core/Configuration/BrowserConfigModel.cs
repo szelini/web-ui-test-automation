@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace TestAutomationFramework.Core.Configuration
 {
-    public class ConfigModel
+    public class BrowserConfigModel : BaseConfigModel
     {
         public string Browser { get; set; }
 
@@ -16,9 +11,7 @@ namespace TestAutomationFramework.Core.Configuration
 
         public string ScreenshotDirectory { get; set; }
 
-        public string LogDirectory { get; set; }
-
-        public string LogLevel { get; set; }
+        public string AppUrl { get; set; }
 
     }
 }

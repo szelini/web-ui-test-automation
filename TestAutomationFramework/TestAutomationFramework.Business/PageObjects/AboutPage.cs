@@ -1,16 +1,14 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TestAutomationFramework.Business.PageObjects
 {
     public class AboutPage : BasePage
     {
-        private IWebElement thirdSectionDiv => wait.Until(driver => driver.FindElement(By.XPath("//div[@class=\"section\"][3]")));
+
+        //#TODO többi by-t is kibontani
+        private By thirdSectionDivLocator => By.XPath("//div[@class=\"section\"][3]");
+        private IWebElement thirdSectionDiv => wait.Until(driver => driver.FindElement(thirdSectionDivLocator));
 
         private IWebElement downloadButton => thirdSectionDiv.FindElement(By.XPath("//a[contains(@href, \".pdf\")]"));
 

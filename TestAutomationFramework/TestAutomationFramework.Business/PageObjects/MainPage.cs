@@ -1,8 +1,5 @@
-﻿using NUnit.Framework;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
-using OpenQA.Selenium.Support.UI;
-
 
 namespace TestAutomationFramework.Business.PageObjects
 {
@@ -19,9 +16,9 @@ namespace TestAutomationFramework.Business.PageObjects
 
 
 
-        public MainPage(IWebDriver driver) : base(driver)
+        public MainPage(IWebDriver driver, string url) : base(driver)
         {
-            PageUrl = TestContext.Parameters["appUrl"];
+            PageUrl = url;
         }
 
 

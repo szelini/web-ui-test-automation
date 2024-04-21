@@ -1,19 +1,16 @@
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
 using TestAutomationFramework.Business.PageObjects;
 
 
 namespace TestAutomationFramework.Tests
 {
     [TestFixture]
-    public class Tests : BaseTest
+    public class WebUITests : WebUIBaseTest
     {
         [TestCase("C#", "All Locations")]
-        public void SearchForPosition_ProgrammingLanguageLocationRemote(string programmingLanguage, string location) 
+        public void SearchForPosition_ProgrammingLanguageLocationRemote(string programmingLanguage, string location)
         {
 
-            var mainPage = new MainPage(driver);
+            var mainPage = new MainPage(driver, configuration.Model.AppUrl);
 
             var careersPage = mainPage.Open().NavigateToCareersPage();
 
@@ -25,7 +22,7 @@ namespace TestAutomationFramework.Tests
 
             var jobDetailPage = jobListingsPage.ClickViewAndApplyButton();
 
-            bool resultContainsProgrammingLanguage= jobDetailPage.ContainsProgrammingLanguage(programmingLanguage);
+            bool resultContainsProgrammingLanguage = jobDetailPage.ContainsProgrammingLanguage(programmingLanguage);
 
             Assert.True(resultContainsProgrammingLanguage);
 
@@ -36,8 +33,8 @@ namespace TestAutomationFramework.Tests
         [TestCase("Automation")]
         public void GlobalSearch_ReturnsRelevantLinks(string phrase)
         {
-          
-            var mainPage = new MainPage(driver);
+
+            var mainPage = new MainPage(driver, configuration.Model.AppUrl);
 
             var searchPage = mainPage.Open().PerformSearch(phrase);
 
@@ -49,10 +46,10 @@ namespace TestAutomationFramework.Tests
         [TestCase("C:\\SeleniumDownloads", "EPAM_Corporate_Overview_Q4_EOY.pdf")]
         public void FileDownloadWorks(string filepath, string filename)
         {
-            var mainPage = new MainPage(driver);
-           
+            var mainPage = new MainPage(driver, configuration.Model.AppUrl);
+
             var aboutPage = mainPage.Open().NavigateToAboutPage();
-            
+
 
             aboutPage.Download(filepath, filename);
 
@@ -64,7 +61,7 @@ namespace TestAutomationFramework.Tests
         [Test]
         public void TitleOfArticleMatchesTitleInCarousel()
         {
-            var mainPage = new MainPage(driver);
+            var mainPage = new MainPage(driver, configuration.Model.AppUrl);
             var insightsPage = mainPage.Open().NavigateToInsightsPage();
 
             var articleNameFromCarousel = insightsPage.GetArticleNameFromCarousel();

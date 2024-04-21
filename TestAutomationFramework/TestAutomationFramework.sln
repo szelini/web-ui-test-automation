@@ -6,10 +6,15 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestAutomationFramework.Tests", "TestAutomationFramework.Tests\TestAutomationFramework.Tests.csproj", "{7C85228E-D364-464E-83BA-6C41B7A478BD}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestAutomationFramework.Business", "TestAutomationFramework.Business\TestAutomationFramework.Business.csproj", "{534B3F65-8C89-4138-A219-25EB839CB589}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A293CE94-A686-4C26-9E86-869E0E5D1690} = {A293CE94-A686-4C26-9E86-869E0E5D1690}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestAutomationFramework.Core", "TestAutomationFramework.Core\TestAutomationFramework.Core.csproj", "{A293CE94-A686-4C26-9E86-869E0E5D1690}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestAutomationFramework.BDD", "TestAutomationFramework.BDD\TestAutomationFramework.BDD.csproj", "{4E64F58D-75FE-47B5-82E3-7A68CB6FCC7D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestAutomationFramework.ApiTests", "TestAutomationFramework.ApiTests\TestAutomationFramework.ApiTests.csproj", "{CD17BE92-85B2-419F-8163-73EE1E6FE052}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +38,10 @@ Global
 		{4E64F58D-75FE-47B5-82E3-7A68CB6FCC7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E64F58D-75FE-47B5-82E3-7A68CB6FCC7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E64F58D-75FE-47B5-82E3-7A68CB6FCC7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD17BE92-85B2-419F-8163-73EE1E6FE052}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD17BE92-85B2-419F-8163-73EE1E6FE052}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD17BE92-85B2-419F-8163-73EE1E6FE052}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD17BE92-85B2-419F-8163-73EE1E6FE052}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

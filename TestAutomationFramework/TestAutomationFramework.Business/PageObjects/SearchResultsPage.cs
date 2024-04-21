@@ -1,10 +1,4 @@
 ﻿using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TestAutomationFramework.Business.PageObjects
 {
@@ -20,6 +14,5 @@ namespace TestAutomationFramework.Business.PageObjects
         {
             return resultListDiv.FindElements(By.XPath("//*[@class='search-results__title-link' or @class='search-results__description']")).Select(t => t.Text).ToList();
         }
-
     }
 }

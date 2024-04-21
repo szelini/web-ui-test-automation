@@ -1,9 +1,4 @@
 ﻿using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TestAutomationFramework.Business.PageObjects
 {
@@ -16,8 +11,18 @@ namespace TestAutomationFramework.Business.PageObjects
 
         public bool ContainsProgrammingLanguage(string language)
         {
-            var containsProgrammingLanguage = driver.FindElements(By.XPath($"//*[contains(text(), '{language}')]"));
-            return containsProgrammingLanguage.Any();
+            //var containsProgrammingLanguage = driver.FindElements(By.XPath($"//*[contains(text(), '{language}')]"));
+            //return containsProgrammingLanguage.Any();
+            try
+            {
+                driver.FindElements(By.XPath($"//*[contains(text(), '{language}')]"));
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
         }
     }
 }

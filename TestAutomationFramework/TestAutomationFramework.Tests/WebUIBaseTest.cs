@@ -1,27 +1,27 @@
-﻿using NUnit.Framework.Interfaces;
-using NUnit.Framework;
+﻿
+using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
 using TestAutomationFramework.Core.Configuration;
 using TestAutomationFramework.Core.DriverFactory;
 using TestAutomationFramework.Core.Utilities;
 
-namespace TestAutomationFramework.BDD.StepDefinitions
+namespace TestAutomationFramework.Tests
 {
-    [Binding]
-    public class BaseStepDefinitions
+    public class WebUIBaseTest
     {
-        protected static IWebDriver driver;
-        protected static BrowserConfiguration configuration;
+        protected IWebDriver driver;
 
-        [BeforeFeature()]
-        public static void OneTimeSetUp()
+        protected BrowserConfiguration configuration;
+
+        [OneTimeSetUp]
+        public void OneTimeSetUp()
         {
-            configuration = new BrowserConfiguration("config.json");
+            configuration = new BrowserConfiguration("webuitest_config.json");
             Logger.InitLogger(configuration.Model.LogDirectory, configuration.Model.LogLevel);
         }
 
-        [BeforeScenario()]
-        public static void Setup()
+        [SetUp]
+        public void Setup()
         {
             Logger.Info($"{TestContext.CurrentContext.Test.Name} started");
 
@@ -32,8 +32,8 @@ namespace TestAutomationFramework.BDD.StepDefinitions
         }
 
 
-        [AfterScenario()]
-        public static void TearDown()
+        [TearDown]
+        public void TearDown()
         {
             if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
             {
@@ -45,7 +45,5 @@ namespace TestAutomationFramework.BDD.StepDefinitions
             driver.Quit();
 
         }
-
-
     }
 }
