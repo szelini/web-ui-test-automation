@@ -1,9 +1,4 @@
 ﻿using RestSharp;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TestAutomationFramework.Core.ApiClient
 {
@@ -17,7 +12,6 @@ namespace TestAutomationFramework.Core.ApiClient
             _client = new RestClient();
             BaseUrl = url;
         }
-           
 
         public void Dispose()
         {

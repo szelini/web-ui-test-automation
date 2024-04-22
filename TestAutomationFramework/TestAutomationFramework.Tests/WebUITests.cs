@@ -1,4 +1,5 @@
 using TestAutomationFramework.Business.PageObjects;
+using TestAutomationFramework.Core.Utilities;
 
 
 namespace TestAutomationFramework.Tests
@@ -50,8 +51,16 @@ namespace TestAutomationFramework.Tests
 
             var aboutPage = mainPage.Open().NavigateToAboutPage();
 
+            FolderMaintainer.PreviousFileClener(filepath, filename);
+            ;
 
-            aboutPage.Download(filepath, filename);
+            FolderMaintainer.DirectoryCreator(filepath);
+
+            ;
+
+            aboutPage.ClickDownloadButton();
+
+            ;
 
             var fullDownloadPath = Path.Combine(filepath, filename);
 

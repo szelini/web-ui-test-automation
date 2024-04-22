@@ -6,13 +6,13 @@ namespace TestAutomationFramework.Business.PageObjects
     public class MainPage : BasePage
     {
 
-        private IWebElement careersLink => driver.FindElement(By.LinkText("Careers"));
-
-        private IWebElement searchIcon => driver.FindElement(By.ClassName("search-icon"));
-        private IWebElement searchInput => wait.Until(driver => driver.FindElement(By.Name("q")));
-        private IWebElement findButton => driver.FindElement(By.ClassName("custom-search-button"));
-        private IWebElement aboutLink => driver.FindElement(By.LinkText("About"));
-        private IWebElement insightsLink => driver.FindElement(By.LinkText("Insights"));
+        private By careersLinkLocator => By.LinkText("Careers");
+       
+        private By searchIconLocator => By.ClassName("search-icon");
+        private By searchInputLocator => By.Name("q");
+        private By findButtonLocator => By.ClassName("custom-search-button");
+        private By aboutLinkLocator => By.LinkText("About");
+        private By insightsLinkLocator => By.LinkText("Insights");
 
 
 
@@ -30,13 +30,17 @@ namespace TestAutomationFramework.Business.PageObjects
 
         public CareersPage NavigateToCareersPage()
         {
+            IWebElement careersLink = driver.FindElement(careersLinkLocator);
             careersLink.Click();
             return new CareersPage(driver);
         }
 
         public SearchResultsPage PerformSearch(string phrase)
         {
+            IWebElement searchIcon = driver.FindElement(searchIconLocator);
             searchIcon.Click();
+
+            IWebElement searchInput = driver.FindElement(searchInputLocator);
 
             var clickAndSendKeysActions = new Actions(driver);
 
@@ -45,6 +49,8 @@ namespace TestAutomationFramework.Business.PageObjects
                 .SendKeys(phrase)
                 .Perform();
 
+            IWebElement findButton = driver.FindElement(findButtonLocator);
+
             findButton.Click();
 
             return new SearchResultsPage(driver);
@@ -52,12 +58,14 @@ namespace TestAutomationFramework.Business.PageObjects
 
         public AboutPage NavigateToAboutPage()
         {
+            IWebElement aboutLink = driver.FindElement(aboutLinkLocator);
             aboutLink.Click();
             return new AboutPage(driver);
         }
 
         public InsightsPage NavigateToInsightsPage()
         {
+            IWebElement insightsLink = driver.FindElement(insightsLinkLocator);
             insightsLink.Click();
             return new InsightsPage(driver);
         }

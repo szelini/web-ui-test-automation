@@ -6,11 +6,10 @@ namespace TestAutomationFramework.Business.ApiClients
 {
     public  class JsonPlaceholderTypicodeClient : BaseApiClient
     {
-
         public JsonPlaceholderTypicodeClient(string url) :base(url)
         {
-                
         }
+
         public  Task<List<User>> GetUsers(RestRequest request)
         {
             return _client.GetAsync<List<User>>(request);
@@ -22,11 +21,10 @@ namespace TestAutomationFramework.Business.ApiClients
             return response;
         }
 
-        public  RestResponse ExecuteRequest(RestRequest request)
+        public  async Task<RestResponse> ExecuteRequest(RestRequest request)
         {
             var response = _client.Execute(request);
             return response;
-
         }
 
         public async Task <User> PostUser(RestRequest request)

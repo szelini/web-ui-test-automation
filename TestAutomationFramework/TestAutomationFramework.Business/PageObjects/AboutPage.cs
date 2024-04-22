@@ -5,31 +5,20 @@ namespace TestAutomationFramework.Business.PageObjects
 {
     public class AboutPage : BasePage
     {
-
-        //#TODO többi by-t is kibontani
         private By thirdSectionDivLocator => By.XPath("//div[@class=\"section\"][3]");
-        private IWebElement thirdSectionDiv => wait.Until(driver => driver.FindElement(thirdSectionDivLocator));
-
-        private IWebElement downloadButton => thirdSectionDiv.FindElement(By.XPath("//a[contains(@href, \".pdf\")]"));
-
+        private By downloadButtonLocator => By.XPath("//a[contains(@href, \".pdf\")]");
+        
         public AboutPage(IWebDriver driver) : base(driver)
         {
         }
 
-        public void Download(string filepath, string filename)
+        public void ClickDownloadButton()
         {
-            if (File.Exists(Path.Combine(filepath, filename)))
-            {
-                File.Delete(Path.Combine(filepath, filename));
-            }
-
-            if (!Directory.Exists(filepath))
-            {
-                Directory.CreateDirectory(filepath);
-            }
+            IWebElement thirdSectionDiv = wait.Until(driver => driver.FindElement(thirdSectionDivLocator));
+            IWebElement downloadButton = wait.Until(driver => thirdSectionDiv.FindElement(downloadButtonLocator));
 
             var downloadActions = new Actions(driver);
-
+           
             downloadActions
                .ScrollToElement(thirdSectionDiv)
                .Click(downloadButton)

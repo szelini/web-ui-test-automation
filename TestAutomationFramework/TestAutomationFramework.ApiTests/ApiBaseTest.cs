@@ -1,10 +1,6 @@
 using NUnit.Framework.Interfaces;
-using RestSharp;
 using TestAutomationFramework.Business.ApiClients;
-using TestAutomationFramework.Business.ApiModels;
-using TestAutomationFramework.Core.ApiClient;
 using TestAutomationFramework.Core.Configuration;
-using TestAutomationFramework.Core.DriverFactory;
 using TestAutomationFramework.Core.Utilities;
 
 namespace TestAutomationFramework.ApiTests
@@ -28,7 +24,6 @@ namespace TestAutomationFramework.ApiTests
             client = new JsonPlaceholderTypicodeClient(configuration.Model.AppUrl);
         }
 
-
         [TearDown]
         public void TearDown()
         {
@@ -38,9 +33,7 @@ namespace TestAutomationFramework.ApiTests
             }
 
             Logger.Info($"{TestContext.CurrentContext.Test.Name} finished");
-
             client.Dispose();
-
         }
     }
 }
