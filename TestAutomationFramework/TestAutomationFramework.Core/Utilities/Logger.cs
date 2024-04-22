@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
-using Serilog;
+﻿using Serilog;
 using Serilog.Core;
 using Serilog.Events;
 
@@ -36,8 +35,6 @@ namespace TestAutomationFramework.Core.Utilities
              .WriteTo.Console()
              .WriteTo.File(Path.Combine(logDirectoryPath, $"log.txt"), rollingInterval: RollingInterval.Day) 
              .CreateLogger();
-
-            //{ DateTime.Now.ToShortDateString()}
         }
     }
 }
