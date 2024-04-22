@@ -19,6 +19,5 @@ namespace TestAutomationFramework.Business.PageObjects
                 Message = "Element has not been found"
             };
         }
-
     }
 }

@@ -18,7 +18,6 @@ namespace TestAutomationFramework.Business.PageObjects
         {
             IWebElement carouselRightButton = wait.Until(driver => driver.FindElement(carouselRightButtonLocator));
 
-
             var carouselActions = new Actions(driver);
             carouselActions
                 .Pause(TimeSpan.FromSeconds(2))
@@ -39,6 +38,5 @@ namespace TestAutomationFramework.Business.PageObjects
             readMoreLink.Click();
             return new ArticlePage(driver);
         }
-
     }
 }

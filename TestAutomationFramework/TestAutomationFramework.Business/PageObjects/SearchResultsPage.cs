@@ -5,7 +5,6 @@ namespace TestAutomationFramework.Business.PageObjects
     public class SearchResultsPage : BasePage
     {
         private By resultListDivLocator => By.ClassName("search-results__items");
-
         public SearchResultsPage(IWebDriver driver) : base(driver)
         {
         }

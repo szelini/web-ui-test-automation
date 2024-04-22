@@ -26,7 +26,6 @@ namespace TestAutomationFramework.Tests
             bool resultContainsProgrammingLanguage = jobDetailPage.ContainsProgrammingLanguage(programmingLanguage);
 
             Assert.True(resultContainsProgrammingLanguage);
-
         }
 
         [TestCase("BLOCKCHAIN")]
@@ -52,15 +51,9 @@ namespace TestAutomationFramework.Tests
             var aboutPage = mainPage.Open().NavigateToAboutPage();
 
             FolderMaintainer.PreviousFileClener(filepath, filename);
-            ;
-
             FolderMaintainer.DirectoryCreator(filepath);
-
-            ;
-
+            
             aboutPage.ClickDownloadButton();
-
-            ;
 
             var fullDownloadPath = Path.Combine(filepath, filename);
 

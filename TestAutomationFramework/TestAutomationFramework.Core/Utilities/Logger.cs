@@ -1,4 +1,5 @@
-﻿using Serilog;
+﻿using Microsoft.Extensions.Configuration;
+using Serilog;
 using Serilog.Core;
 using Serilog.Events;
 
@@ -25,21 +26,18 @@ namespace TestAutomationFramework.Core.Utilities
 
         public static void InitLogger(string logDirectoryPath, string logLevel)
         {
-            if (!Directory.Exists(logDirectoryPath))
-            {
-                Directory.CreateDirectory(logDirectoryPath);
-            }
-
+            FolderMaintainer.DirectoryCreator(logDirectoryPath);
+            
             var levelSwitch = new LoggingLevelSwitch();
             levelSwitch.MinimumLevel = (LogEventLevel)Enum.Parse(typeof(LogEventLevel), logLevel);
 
             logger = new LoggerConfiguration()
              .MinimumLevel.ControlledBy(levelSwitch)
              .WriteTo.Console()
-             .WriteTo.File(Path.Combine(logDirectoryPath, $"{DateTime.Now.ToShortDateString()}.txt"), rollingInterval: RollingInterval.Day) 
+             .WriteTo.File(Path.Combine(logDirectoryPath, $"log.txt"), rollingInterval: RollingInterval.Day) 
              .CreateLogger();
 
-            
+            //{ DateTime.Now.ToShortDateString()}
         }
     }
 }

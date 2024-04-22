@@ -12,7 +12,6 @@ namespace TestAutomationFramework.Business.PageObjects
         private By remoteCheckboxLocator = By.Id("id-93414a92-598f-316d-b965-9eb0dfefa42d-remote");
 
         private By remoteCheckboxLabelLocator = By.XPath("//input[@id='id-93414a92-598f-316d-b965-9eb0dfefa42d-remote']/following-sibling::*");
-
         private By findButtonLocator => By.XPath("//button[@type='submit']");
 
         public CareersPage(IWebDriver driver) : base(driver)
@@ -53,7 +52,6 @@ namespace TestAutomationFramework.Business.PageObjects
             }
 
             return this;
-
         }
 
         public JobListingsPage ClickFindButton()
@@ -63,6 +61,5 @@ namespace TestAutomationFramework.Business.PageObjects
             findButton.Click();
             return new JobListingsPage(driver);
         }
-
     }
 }

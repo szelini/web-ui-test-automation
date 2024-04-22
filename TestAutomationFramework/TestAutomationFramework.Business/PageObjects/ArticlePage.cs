@@ -9,7 +9,6 @@ namespace TestAutomationFramework.Business.PageObjects
         public ArticlePage(IWebDriver driver) : base(driver)
         {
         }
-
         public string GetArticleNameFromHeader()
         {
             IWebElement articleName = wait.Until(driver => driver.FindElement(articleNameLocator));

@@ -1,5 +1,4 @@
 using NUnit.Framework;
-using OpenQA.Selenium;
 using TestAutomationFramework.Business.PageObjects;
 
 namespace TestAutomationFramework.BDD.StepDefinitions
@@ -16,7 +15,6 @@ namespace TestAutomationFramework.BDD.StepDefinitions
         {
             mainPage = new MainPage(driver, configuration.Model.AppUrl);
         }
-
 
         [Given(@"I open Epam website")]
         public void GivenIOpenEpamWebsite()
@@ -59,7 +57,6 @@ namespace TestAutomationFramework.BDD.StepDefinitions
         {
             jobDetailPage = jobListingsPage.ClickViewAndApplyButton();
         }
-
 
         [Then(@"'(.*)' should be mentioned on the page")]
         public void ThenShouldBeMentionedOnThePage(string programming_language)

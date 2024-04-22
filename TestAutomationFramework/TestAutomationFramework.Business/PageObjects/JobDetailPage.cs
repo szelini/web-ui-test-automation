@@ -6,7 +6,6 @@ namespace TestAutomationFramework.Business.PageObjects
     {
         public JobDetailPage(IWebDriver driver) : base(driver)
         {
-
         }
 
         public bool ContainsProgrammingLanguage(string language)

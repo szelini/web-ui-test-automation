@@ -25,12 +25,10 @@ namespace TestAutomationFramework.Tests
         {
             Logger.Info($"{TestContext.CurrentContext.Test.Name} started");
 
-            var browser = (Drivers)Enum.Parse(typeof(Drivers), configuration.Model.Browser);
-
-            driver = DriverProvider.GetDriverFactory(browser).CreateDriver(configuration.Model);
+            var driverType = (DriverType)Enum.Parse(typeof(DriverType), configuration.Model.Browser);
+            driver = DriverFactory.GetDriverInstance(driverType, configuration.Model);
             driver.Manage().Window.Maximize();
         }
-
 
         [TearDown]
         public void TearDown()
@@ -38,12 +36,13 @@ namespace TestAutomationFramework.Tests
             if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
             {
                 Logger.Error($"{TestContext.CurrentContext.Test.Name} failed");
-                ScreenShotTaker.TakeScreenShot(driver, TestContext.CurrentContext.Test.MethodName, configuration.Model.ScreenshotDirectory);
+                var screenshotDir = Path.Combine(configuration.Model.ScreenshotDirectory, TestContext.CurrentContext.Test.MethodName, DateTime.Now.Year.ToString(), DateTime.Now.Month.ToString());
+                FolderMaintainer.DirectoryCreator(screenshotDir);
+                ScreenShotTaker.TakeScreenShot(driver, TestContext.CurrentContext.Test.MethodName, screenshotDir);
             }
-
+            
             Logger.Info($"{TestContext.CurrentContext.Test.Name} finished");
             driver.Quit();
-
         }
     }
 }

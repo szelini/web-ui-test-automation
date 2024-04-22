@@ -1,6 +1,5 @@
 ﻿using RestSharp;
 using System.Net;
-using System.Text;
 using TestAutomationFramework.Business.ApiModels;
 using TestAutomationFramework.Core.Utilities;
 

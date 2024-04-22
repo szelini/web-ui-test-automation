@@ -5,22 +5,17 @@ namespace TestAutomationFramework.Business.PageObjects
 {
     public class MainPage : BasePage
     {
-
         private By careersLinkLocator => By.LinkText("Careers");
-       
         private By searchIconLocator => By.ClassName("search-icon");
         private By searchInputLocator => By.Name("q");
         private By findButtonLocator => By.ClassName("custom-search-button");
         private By aboutLinkLocator => By.LinkText("About");
         private By insightsLinkLocator => By.LinkText("Insights");
 
-
-
         public MainPage(IWebDriver driver, string url) : base(driver)
         {
             PageUrl = url;
         }
-
 
         public MainPage Open()
         {
