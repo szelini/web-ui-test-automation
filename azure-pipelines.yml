@@ -32,7 +32,8 @@ steps:
     command: 'test'
     projects: '**/*Tests.csproj'
 
-- task: PublishTestResults@2
+
+- task: PublishPipelineArtifact@1
   inputs:
-    testResultsFormat: 'NUnit'
-    testResultsFiles: '**/TEST-*.xml'
+    targetPath: '$(Pipeline.Workspace)'
+    publishLocation: 'pipeline'
