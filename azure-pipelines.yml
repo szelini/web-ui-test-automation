@@ -32,12 +32,8 @@ steps:
     command: 'test'
     projects: '**/*Tests.csproj'
 
-- task: DotNetCoreCLI@2
-  displayName: 'dotnet publish'
+
+- task: PublishPipelineArtifact@1
   inputs:
-    command: 'publish'
-    publishWebProjects: false
-    projects: '**/*.csproj'
-    arguments: '-o $(Build.ArtifactStagingDirectory)/Output'
-    zipAfterPublish: false
-    modifyOutputPath: true
+    targetPath: '$(Pipeline.Workspace)'
+    publishLocation: 'pipeline'
