@@ -49,5 +49,5 @@ steps:
   condition: succeededOrFailed()
   inputs:
     testResultsFormat: "NUnit"
-    testResultsFiles: "$(Pipeline.Workspace)/testResults.xml"
+    testResultsFiles: "$(Build.ArtifactStagingDirectory)/testResults.xml"
     failTaskOnFailedTests: true
