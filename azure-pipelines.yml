@@ -31,11 +31,12 @@ steps:
   inputs:
     command: 'test'
     projects: '**/*ApiTests.csproj'
+   
 
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
-    projects: '**/*WebUITests.csproj'
+    projects: '**/*TestAutomationFramework.Tests.csproj'
   condition: succeededOrFailed()
 
 - task: PublishTestResults@2
