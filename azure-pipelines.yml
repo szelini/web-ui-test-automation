@@ -30,12 +30,12 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
-    projects: '**/ApiTests.csproj'
+    projects: '**/*ApiTests.csproj'
 
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
-    projects: '**/WebUITests.csproj'
+    projects: '**/*WebUITests.csproj'
   condition: succeededOrFailed()
 
 - task: PublishTestResults@2
