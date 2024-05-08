@@ -28,6 +28,11 @@ steps:
     configuration: '$(buildConfiguration)'
 
 - task: DotNetCoreCLI@2
+  inputs:
+    command: 'test'
+    projects: '**/*Tests.csproj'
+
+- task: DotNetCoreCLI@2
   displayName: 'dotnet publish'
   inputs:
     command: 'publish'
