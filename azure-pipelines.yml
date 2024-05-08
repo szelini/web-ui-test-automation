@@ -41,13 +41,7 @@ steps:
 
 - task: PublishPipelineArtifact@1
   inputs:
-    targetPath: '$(Build.ArtifactStagingDirectory)/results'
-    artifact: eredmenyek
+    targetPath: '$(Pipeline.Workspace)'
+    artifact: drop
+    publishLocation: 'pipeline'
   condition: succeededOrFailed()
-
-- task: PublishTestResults@2
-  condition: succeededOrFailed()
-  inputs:
-    testResultsFormat: "NUnit"
-    testResultsFiles: "$(Build.ArtifactStagingDirectory)/testResults.xml"
-    failTaskOnFailedTests: true
