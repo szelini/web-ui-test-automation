@@ -7,7 +7,7 @@ namespace TestAutomationFramework.Core.Utilities
 {
     public static class ScreenShotTaker
     {
-        public static void TakeScreenShot(IWebDriver driver, string testName, string screenshotDirectoryPath)
+        public static void TakeScreenShot(IWebDriver driver, string fileName, string screenshotDirectoryPath)
         {
             if (!Directory.Exists(screenshotDirectoryPath))
             {
@@ -16,7 +16,7 @@ namespace TestAutomationFramework.Core.Utilities
 
             VerticalCombineDecorator vcd = new VerticalCombineDecorator(new ScreenshotMaker());
 
-            driver.TakeScreenshot(vcd).ToMagickImage().Write(new FileInfo(Path.Combine(Path.GetFullPath(screenshotDirectoryPath), $"{testName}_{DateTime.Now:yyyy-MM-dd_HH-mm-ss.fffff}.png")));
+            driver.TakeScreenshot(vcd).ToMagickImage().Write(new FileInfo(Path.Combine(Path.GetFullPath(screenshotDirectoryPath), fileName)));
         }
     }
 }

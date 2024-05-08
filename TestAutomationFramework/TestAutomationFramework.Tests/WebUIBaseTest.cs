@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
 using TestAutomationFramework.Core.Configuration;
@@ -38,7 +39,9 @@ namespace TestAutomationFramework.Tests
                 Logger.Error($"{TestContext.CurrentContext.Test.Name} failed");
                 var screenshotDir = Path.Combine(configuration.Model.ScreenshotDirectory, TestContext.CurrentContext.Test.MethodName, DateTime.Now.Year.ToString(), DateTime.Now.Month.ToString());
                 FolderMaintainer.DirectoryCreator(screenshotDir);
-                ScreenShotTaker.TakeScreenShot(driver, TestContext.CurrentContext.Test.MethodName, screenshotDir);
+                string fileName = $"{TestContext.CurrentContext.Test.MethodName}_{DateTime.Now:yyyy-MM-dd_HH-mm-ss.fffff}.png";
+                ScreenShotTaker.TakeScreenShot(driver, fileName, screenshotDir);
+                TestContext.AddTestAttachment(Path.Combine(Path.GetFullPath(screenshotDir), fileName));
             }
             
             Logger.Info($"{TestContext.CurrentContext.Test.Name} finished");
