@@ -38,10 +38,10 @@ steps:
     projects: '**/WebUITests.csproj'
   condition: succeededOrFailed()
 
-
-- task: PublishPipelineArtifact@1
-  inputs:
-    targetPath: '$(Pipeline.Workspace)'
-    artifact: drop
-    publishLocation: 'pipeline'
+- task: PublishTestResults@2
   condition: succeededOrFailed()
+  inputs:
+    testResultsFormat: 'NUnit'
+    testResultsFiles: '**/TEST-*.xml'
+    searchFolder: '$(System.DefaultWorkingDirectory)/SeleniumScreenshots'
+    publishRunAttachments: true
