@@ -1,5 +1,5 @@
 {
-  "logDirectory": "C:\\ApiTestLogs\\",
+  "logDirectory": "ApiTestLogs",
   "logLevel": "Information",
   "appUrl": "https://jsonplaceholder.typicode.com"
 }

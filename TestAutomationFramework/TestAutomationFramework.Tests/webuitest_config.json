@@ -2,8 +2,8 @@
   "browser": "Chrome",
   "runHeadlessMode": false,
   "appUrl": "https://www.epam.com/",
-  "downloadDirectory": "C:\\SeleniumDownloads\\",
-  "screenshotDirectory": "C:\\SeleniumScreenshots\\",
-  "logDirectory": "C:\\SeleniumLogs\\",
+  "downloadDirectory": "SeleniumDownloads",
+  "screenshotDirectory": "SeleniumScreenshots",
+  "logDirectory": "SeleniumLogs",
   "logLevel": "Information"
 }

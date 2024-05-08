@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
+using OpenQA.Selenium.DevTools.V119.Debugger;
 using TestAutomationFramework.Core.Configuration;
 using TestAutomationFramework.Core.DriverFactory;
 using TestAutomationFramework.Core.Utilities;
@@ -18,7 +19,7 @@ namespace TestAutomationFramework.Tests
         public void OneTimeSetUp()
         {
             configuration = new BrowserConfiguration("webuitest_config.json");
-            Logger.InitLogger(configuration.Model.LogDirectory, configuration.Model.LogLevel);
+            Logger.InitLogger(Path.Combine(Directory.GetCurrentDirectory(), configuration.Model.LogDirectory), configuration.Model.LogLevel);
         }
 
         [SetUp]
@@ -37,7 +38,7 @@ namespace TestAutomationFramework.Tests
             if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
             {
                 Logger.Error($"{TestContext.CurrentContext.Test.Name} failed");
-                var screenshotDir = Path.Combine(configuration.Model.ScreenshotDirectory, TestContext.CurrentContext.Test.MethodName, DateTime.Now.Year.ToString(), DateTime.Now.Month.ToString());
+                var screenshotDir = Path.Combine(Directory.GetCurrentDirectory(), configuration.Model.ScreenshotDirectory, TestContext.CurrentContext.Test.MethodName, DateTime.Now.Year.ToString(), DateTime.Now.Month.ToString());
                 FolderMaintainer.DirectoryCreator(screenshotDir);
                 string fileName = $"{TestContext.CurrentContext.Test.MethodName}_{DateTime.Now:yyyy-MM-dd_HH-mm-ss.fffff}.png";
                 ScreenShotTaker.TakeScreenShot(driver, fileName, screenshotDir);

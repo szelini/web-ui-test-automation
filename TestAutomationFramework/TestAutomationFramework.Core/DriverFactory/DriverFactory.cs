@@ -31,7 +31,7 @@ namespace TestAutomationFramework.Core.DriverFactory
 
             if (!string.IsNullOrEmpty(model.DownloadDirectory))
             {
-                chromeOptions.AddUserProfilePreference("download.default_directory", model.DownloadDirectory);
+                chromeOptions.AddUserProfilePreference("download.default_directory", Path.Combine(Directory.GetCurrentDirectory(), model.DownloadDirectory));
                 chromeOptions.AddUserProfilePreference("download.prompt_for_download", false);
             }
 
@@ -49,8 +49,8 @@ namespace TestAutomationFramework.Core.DriverFactory
 
             if (!string.IsNullOrEmpty(model.DownloadDirectory))
             {
-                edgeOptions.AddUserProfilePreference("download.default_directory", model.DownloadDirectory);
-                edgeOptions.AddUserProfilePreference("download.prompt_for_download", model.DownloadDirectory);
+                edgeOptions.AddUserProfilePreference("download.default_directory", Path.Combine(Directory.GetCurrentDirectory(), model.DownloadDirectory));
+                edgeOptions.AddUserProfilePreference("download.prompt_for_download", Path.Combine(Directory.GetCurrentDirectory(), model.DownloadDirectory));
 
             }
 
