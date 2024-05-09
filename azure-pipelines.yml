@@ -3,8 +3,16 @@
 # Add steps that publish symbols, save build artifacts, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/apps/windows/dot-net
 
-trigger:
-- main
+parameters:
+- name: browserType
+  displayName: Browser Type
+  type: string
+  default: chrome
+  values:
+  - chrome
+  - edge
+
+trigger: none
 
 pr:
 - main
@@ -51,7 +59,7 @@ steps:
   inputs:
     command: 'test'
     projects: '**/*TestAutomationFramework.Tests.csproj'
-    arguments: '-- TestRunParameters.Parameter(name="\""browser"\"", value="\""edge"\"")'
+    arguments: '-- TestRunParameters.Parameter(name="\""browser"\"", value="\""${{ parameters.browserType }}"\"")'
   condition: succeededOrFailed()
 
 - task: CopyFiles@2
