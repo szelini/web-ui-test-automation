@@ -51,8 +51,8 @@ steps:
   inputs:
     command: 'test'
     projects: '**/*TestAutomationFramework.Tests.csproj'
+    arguments: '-- TestRunParameters.Parameter(name="\""browser"\"", value="\""edge"\"")'
   condition: succeededOrFailed()
-
 
 - task: CopyFiles@2
   condition: succeededOrFailed()
