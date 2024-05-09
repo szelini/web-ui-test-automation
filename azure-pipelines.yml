@@ -64,5 +64,5 @@ steps:
   condition: succeededOrFailed()
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'scrshots'
+    ArtifactName: 'testresults'
     
