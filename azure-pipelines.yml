@@ -32,17 +32,27 @@ steps:
     command: 'test'
     projects: '**/*ApiTests.csproj'
    
-
+- task: ScreenResolutionUtility@1
+  inputs:
+    displaySettings: 'specific'
+    width: '1920'
+    height: '1080'
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
     projects: '**/*TestAutomationFramework.Tests.csproj'
   condition: succeededOrFailed()
 
-- task: PublishTestResults@2
+
+- task: CopyFiles@2
   condition: succeededOrFailed()
   inputs:
-    testResultsFormat: 'NUnit'
-    testResultsFiles: '**/TEST-*.xml'
-    searchFolder: '$(System.DefaultWorkingDirectory)/SeleniumScreenshots'
-    publishRunAttachments: true
+    SourceFolder: '$(System.DefaultWorkingDirectory)/SeleniumScreenshots'
+    Contents: '**'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
