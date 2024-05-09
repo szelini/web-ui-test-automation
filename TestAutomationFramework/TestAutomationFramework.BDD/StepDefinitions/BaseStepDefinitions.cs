@@ -16,7 +16,16 @@ namespace TestAutomationFramework.BDD.StepDefinitions
         [BeforeFeature()]
         public static void OneTimeSetUp()
         {
-            configuration = new BrowserConfiguration("config.json");
+            configuration = new BrowserConfiguration();
+
+            configuration.Model.AppUrl = TestContext.Parameters["appUrl"];
+            configuration.Model.RunHeadlessMode = bool.Parse(TestContext.Parameters["runHeadlessMode"]);
+            configuration.Model.Browser = TestContext.Parameters["browser"];
+            configuration.Model.DownloadDirectory = TestContext.Parameters["downloadDirectory"];
+            configuration.Model.ScreenshotDirectory = TestContext.Parameters["screenshotDirectory"];
+            configuration.Model.LogDirectory = TestContext.Parameters["logDirectory"];
+            configuration.Model.LogLevel = TestContext.Parameters["logLevel"];
+
             Logger.InitLogger(configuration.Model.LogDirectory, configuration.Model.LogLevel);
         }
 
@@ -25,7 +34,7 @@ namespace TestAutomationFramework.BDD.StepDefinitions
         {
             Logger.Info($"{TestContext.CurrentContext.Test.Name} started");
 
-            var driverType = (DriverType)Enum.Parse(typeof(DriverType), configuration.Model.Browser);
+            var driverType = (DriverType)Enum.Parse(typeof(DriverType), configuration.Model.Browser, true);
             driver = DriverFactory.GetDriverInstance(driverType, configuration.Model);
             driver.Manage().Window.Maximize();
         }

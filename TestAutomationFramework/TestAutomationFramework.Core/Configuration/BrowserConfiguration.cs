@@ -6,9 +6,12 @@ namespace TestAutomationFramework.Core.Configuration
     {
         public  BrowserConfigModel Model { get; }
 
-        public BrowserConfiguration(string configfile)
+        public BrowserConfiguration()
         {
-           Model = JsonParser.DeserializeJsonFileToObject<BrowserConfigModel>(configfile);
+           //Model = JsonParser.DeserializeJsonFileToObject<BrowserConfigModel>(configfile);
+
+            Model = new BrowserConfigModel();
+           
         }
     }
 }

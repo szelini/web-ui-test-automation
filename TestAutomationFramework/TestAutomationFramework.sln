@@ -16,6 +16,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestAutomationFramework.BDD
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestAutomationFramework.ApiTests", "TestAutomationFramework.ApiTests\TestAutomationFramework.ApiTests.csproj", "{CD17BE92-85B2-419F-8163-73EE1E6FE052}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{331F2C5D-1169-4CE5-AAD8-DBDAE41486B2}"
+	ProjectSection(SolutionItems) = preProject
+		test.runsettings = test.runsettings
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
