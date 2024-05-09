@@ -1,0 +1,66 @@
+# .NET Desktop
+# Build and run tests for .NET Desktop or Windows classic desktop solutions.
+# Add steps that publish symbols, save build artifacts, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/apps/windows/dot-net
+
+pr:
+- main
+
+schedules:
+- cron: '0 0 * * *'
+  displayName: Daily midnight build
+  branches:
+    include:
+    - main
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  solution: '**/*.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+
+steps:
+- task: NuGetToolInstaller@1
+
+- task: NuGetCommand@2
+  inputs:
+    restoreSolution: '$(solution)'
+
+- task: VSBuild@1
+  inputs:
+    solution: '$(solution)'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'test'
+    projects: '**/*ApiTests.csproj'
+   
+- task: ScreenResolutionUtility@1
+  inputs:
+    displaySettings: 'specific'
+    width: '1920'
+    height: '1080'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'test'
+    projects: '**/*TestAutomationFramework.Tests.csproj'
+  condition: succeededOrFailed()
+
+- task: CopyFiles@2
+  condition: succeededOrFailed()
+  inputs:
+    Contents: |
+      **\SeleniumScreenshots\**
+      **\SeleniumLogs\**
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+- task: PublishBuildArtifacts@1
+  condition: succeededOrFailed()
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'testresults'
+    
