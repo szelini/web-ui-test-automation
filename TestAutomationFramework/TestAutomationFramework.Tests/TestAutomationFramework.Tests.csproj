@@ -7,14 +7,19 @@
 
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
+	<RunSettingsFilePath>$(MSBuildProjectDirectory)\test.runsettings</RunSettingsFilePath>
   </PropertyGroup>
 
 	
   <ItemGroup>
+    <None Remove="test.runsettings" />
     <None Remove="webuitest_config.json" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="test.runsettings">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="webuitest_config.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
