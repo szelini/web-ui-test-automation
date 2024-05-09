@@ -32,7 +32,7 @@ namespace TestAutomationFramework.BDD.StepDefinitions
         [BeforeScenario()]
         public static void Setup()
         {
-            Logger.Info($"{TestContext.CurrentContext.Test.Name} started");
+            Logger.Info($"Browser: {configuration.Model.Browser} {TestContext.CurrentContext.Test.Name} started");
 
             var driverType = (DriverType)Enum.Parse(typeof(DriverType), configuration.Model.Browser, true);
             driver = DriverFactory.GetDriverInstance(driverType, configuration.Model);
@@ -44,13 +44,13 @@ namespace TestAutomationFramework.BDD.StepDefinitions
         {
             if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
             {
-                Logger.Error($"{TestContext.CurrentContext.Test.Name} failed");
+                Logger.Error($"Browser: {configuration.Model.Browser} {TestContext.CurrentContext.Test.Name} failed");
                 var screenshotDir = Path.Combine(configuration.Model.ScreenshotDirectory, TestContext.CurrentContext.Test.Name,  DateTime.Now.ToShortDateString());
                 FolderMaintainer.DirectoryCreator(screenshotDir);
                 ScreenShotTaker.TakeScreenShot(driver, TestContext.CurrentContext.Test.MethodName, screenshotDir);
             }
 
-            Logger.Info($"{TestContext.CurrentContext.Test.Name} finished");
+            Logger.Info($"Browser: {configuration.Model.Browser} {TestContext.CurrentContext.Test.Name} finished");
             driver.Quit();
         }
     }

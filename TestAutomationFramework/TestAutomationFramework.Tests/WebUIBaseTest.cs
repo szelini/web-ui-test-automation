@@ -34,7 +34,7 @@ namespace TestAutomationFramework.Tests
         [SetUp]
         public void Setup()
         {
-            Logger.Info($"{TestContext.CurrentContext.Test.Name} started");
+            Logger.Info($"Browser: {configuration.Model.Browser} {TestContext.CurrentContext.Test.Name} started");
 
             var driverType = (DriverType)Enum.Parse(typeof(DriverType), configuration.Model.Browser, true);
             driver = DriverFactory.GetDriverInstance(driverType, configuration.Model);
@@ -46,7 +46,7 @@ namespace TestAutomationFramework.Tests
         {
             if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
             {
-                Logger.Error($"{TestContext.CurrentContext.Test.Name} failed");
+                Logger.Error($"Browser: {configuration.Model.Browser} {TestContext.CurrentContext.Test.Name} failed");
                 var screenshotDir = Path.Combine(Directory.GetCurrentDirectory(), configuration.Model.ScreenshotDirectory, TestContext.CurrentContext.Test.MethodName, DateTime.Now.Year.ToString(), DateTime.Now.Month.ToString());
                 FolderMaintainer.DirectoryCreator(screenshotDir);
                 string fileName = $"{TestContext.CurrentContext.Test.MethodName}_{DateTime.Now:yyyy-MM-dd_HH-mm-ss.fffff}.png";
@@ -54,7 +54,7 @@ namespace TestAutomationFramework.Tests
                 TestContext.AddTestAttachment(Path.Combine(Path.GetFullPath(screenshotDir), fileName));
             }
             
-            Logger.Info($"{TestContext.CurrentContext.Test.Name} finished");
+            Logger.Info($"Browser: {configuration.Model.Browser} {TestContext.CurrentContext.Test.Name} finished");
             driver.Quit();
         }
     }
