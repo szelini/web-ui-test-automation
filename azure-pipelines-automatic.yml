@@ -3,16 +3,15 @@
 # Add steps that publish symbols, save build artifacts, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/apps/windows/dot-net
 
-parameters:
-- name: browserType
-  displayName: Browser Type
-  type: string
-  default: chrome
-  values:
-  - chrome
-  - edge
+pr:
+- main
 
-trigger: none
+schedules:
+- cron: '0 0 * * *'
+  displayName: Daily midnight build
+  branches:
+    include:
+    - main
 
 pool:
   vmImage: 'windows-latest'
@@ -49,7 +48,6 @@ steps:
   inputs:
     command: 'test'
     projects: '**/*TestAutomationFramework.Tests.csproj'
-    arguments: '-- TestRunParameters.Parameter(name="\""browser"\"", value="\""${{ parameters.browserType }}"\"")'
   condition: succeededOrFailed()
 
 - task: CopyFiles@2
@@ -61,7 +59,6 @@ steps:
       **\ApiTestLogs\**
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
     flattenFolders: true
-    
 
 - task: PublishBuildArtifacts@1
   condition: succeededOrFailed()
@@ -69,4 +66,3 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'testresults'
     
-
