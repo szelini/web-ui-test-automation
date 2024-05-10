@@ -28,7 +28,7 @@ namespace TestAutomationFramework.Tests
             configuration.Model.LogDirectory = TestContext.Parameters["logDirectory"];
             configuration.Model.LogLevel = TestContext.Parameters["logLevel"];
 
-            Logger.InitLogger(Path.Combine(Directory.GetCurrentDirectory(), configuration.Model.LogDirectory), configuration.Model.LogLevel);
+            Logger.InitLogger(Path.Combine(Directory.GetCurrentDirectory(), configuration.Model.LogDirectory), "log_webuitests.txt", configuration.Model.LogLevel);
         }
 
         [SetUp]

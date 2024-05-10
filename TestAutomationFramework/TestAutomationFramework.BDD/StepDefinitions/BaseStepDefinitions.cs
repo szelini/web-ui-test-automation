@@ -26,7 +26,7 @@ namespace TestAutomationFramework.BDD.StepDefinitions
             configuration.Model.LogDirectory = TestContext.Parameters["logDirectory"];
             configuration.Model.LogLevel = TestContext.Parameters["logLevel"];
 
-            Logger.InitLogger(configuration.Model.LogDirectory, configuration.Model.LogLevel);
+            Logger.InitLogger(configuration.Model.LogDirectory, "log_bddtests.txt", configuration.Model.LogLevel);
         }
 
         [BeforeScenario()]

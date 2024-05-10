@@ -14,7 +14,7 @@ namespace TestAutomationFramework.ApiTests
         public void OneTimeSetUp()
         {
             configuration = new ApiConfiguration("apitest_config.json");
-            Logger.InitLogger(configuration.Model.LogDirectory, configuration.Model.LogLevel);
+            Logger.InitLogger(configuration.Model.LogDirectory, "log_apitests.txt", configuration.Model.LogLevel);
         }
 
         [SetUp]

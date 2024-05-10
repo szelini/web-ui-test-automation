@@ -23,7 +23,7 @@ namespace TestAutomationFramework.Core.Utilities
             logger.Warning(message);
         }
 
-        public static void InitLogger(string logDirectoryPath, string logLevel)
+        public static void InitLogger(string logDirectoryPath, string logFileName, string logLevel)
         {
             FolderMaintainer.DirectoryCreator(logDirectoryPath);
             
@@ -33,7 +33,7 @@ namespace TestAutomationFramework.Core.Utilities
             logger = new LoggerConfiguration()
              .MinimumLevel.ControlledBy(levelSwitch)
              .WriteTo.Console()
-             .WriteTo.File(Path.Combine(logDirectoryPath, $"log.txt"), rollingInterval: RollingInterval.Day) 
+             .WriteTo.File(Path.Combine(logDirectoryPath, logFileName), rollingInterval: RollingInterval.Day) 
              .CreateLogger();
         }
     }
