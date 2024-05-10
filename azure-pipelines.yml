@@ -58,7 +58,10 @@ steps:
     Contents: |
       **\SeleniumScreenshots\**
       **\SeleniumLogs\**
+      **\ApiTestLogs\**
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    flattenFolders: true
+    
 
 - task: PublishBuildArtifacts@1
   condition: succeededOrFailed()
@@ -66,3 +69,4 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'testresults'
     
+
